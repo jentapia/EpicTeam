@@ -74,8 +74,6 @@ const db = SQLite.openDatabase('db.db');
           }}>
         
         </Text>
-
-        <Button title="Return" onPress={() => navigation.navigate('Home')} />
       </View>
     </SafeAreaView>
   );
