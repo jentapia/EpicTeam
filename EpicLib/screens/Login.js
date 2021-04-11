@@ -2,9 +2,61 @@ import * as React from 'react';
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import * as SQLite from 'expo-sqlite';
 
+const db = SQLite.openDatabase('db.db');
 
 export default function login({ navigation }) {
+  const [users, setUsers] = React.useState(null);
+  var userTest = {
+    id: 1,
+    email: 'test@test.com',
+    passwd: '1234',
+    role: 'admin'
+  }
+
+  var userTest2 = {
+    id: 2,
+    email: 'mitzy',
+    passwd: '123456',
+    role: 'user'
+  }
+
+  React.useEffect(() => {
+
+      db.transaction(tx => {
+    
+        tx.executeSql(
+          "create table if not exists users (id_user integer primary key not null, email text, password text, role text);",
+          []
+        );
+    
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
+          [userTest.id, userTest.email, userTest.passwd, userTest.role]
+        );
+
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
+          [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
+        );
+
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (3, 'jentap', '1234', 'user')",
+          []
+        );
+    
+        tx.executeSql(
+          "select * from users",
+          [],
+          (_, { rows: { _array } }) => setUsers(_array),
+          () => console.log("error fetching")
+        );
+    
+      });
+        
+  }, []);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
  
