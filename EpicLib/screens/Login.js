@@ -35,6 +35,10 @@ export default function login({ navigation }) {
           "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
           [userTest.id, userTest.email, userTest.passwd, userTest.role]
         );
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
+          [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
+        );
    
         tx.executeSql(
           "select * from users",
@@ -45,29 +49,14 @@ export default function login({ navigation }) {
     
       });
 
+             
       db.transaction(tx => {
         tx.executeSql(
-          "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
-          [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
+          "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY NOT NULL, book_name TEXT, author TEXT, cathegory TEXT)",
+          []
         );
-      });
-        
-      db.transaction(tx => {
+
         tx.executeSql(
-        //  "SELECT book_id FROM sqlite_master WHERE type='table' AND name='table_books'",
-          //[],
-         // function (tx, res) {
-          //  console.log('item:', res.rows.length);
-           // if (res.rows.length == 0) {
-            //  tx.executeSql('DROP TABLE IF EXISTS table_books', []);
-             // tx.executeSql(
-                "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY NOT NULL, book_name TEXT, author TEXT, cathegory TEXT)",
-                []
-              );
-           // }
-         // }
-       // );
-       tx.executeSql(
         "insert into table_books (book_id, book_name, author, cathegory) values (1, 'Papelucho', 'Marcela', ?)",
         [userTest.role]
       );

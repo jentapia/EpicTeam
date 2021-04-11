@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, ScrollView, KeyboardAvoidingView, Alert, SafeAreaView,Text, Button, TextInput} from 'react-native';
+import Mytextinput from './components/Mytextinput';
+import Mybutton from './components/Mybutton';
 
 import * as SQLite from 'expo-sqlite';
 
@@ -33,14 +35,14 @@ export default function RegisterBook({navigation}) {
         return;
       }
 
-      db.transaction((tx) => {
+      db.transaction(function (tx) {
         tx.executeSql(
           'INSERT INTO table_books (book_id, book_name, author, cathegory) VALUES (?,?,?,?)',
           [book_id, book_name, author, cathegory],
           (tx, results) => {
             console.log('Results', results.rowsAffected);
             if (results.rowsAffected > 0) {
-              Alert.alert(
+              alert(
                 'Success',
                 'Your book is Registered Successfully',
                 [
@@ -65,23 +67,22 @@ export default function RegisterBook({navigation}) {
               <KeyboardAvoidingView
                 behavior="padding"
                 style={{ flex: 1, justifyContent: 'space-between' }}>
-                <TextInput
+                <Mytextinput
                   placeholder="Enter id of the book"
                   onChangeText={
                     (book_id) => setBook_id(book_id)
                   }
                   style={{ padding: 10 }}
                 />
-                <TextInput
+                <Mytextinput
                   placeholder="Enter the name of the book"
                   onChangeText={
                     (book_name) => setBook_name(book_name)
                   }
                   maxLength={30}
-                  keyboardType="numeric"
                   style={{ padding: 10 }}
                 />
-                <TextInput
+                <Mytextinput
                   placeholder="Enter Author"
                   onChangeText={
                     (author) => setAuthor(author)
@@ -90,7 +91,7 @@ export default function RegisterBook({navigation}) {
                   numberOfLines={30}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
-                <TextInput
+                <Mytextinput
                   placeholder="Enter Cathegory of the book"
                   onChangeText={
                     (cathegory) => setCathegory(cathegory)
@@ -98,7 +99,7 @@ export default function RegisterBook({navigation}) {
                   style={{ padding: 10 }}
                 />
 
-                <Button title="Submit" customClick={register_book} />
+                <Mybutton title="Submit" customClick={register_book} />
             
               </KeyboardAvoidingView>
             </ScrollView>
@@ -109,7 +110,7 @@ export default function RegisterBook({navigation}) {
               textAlign: 'center',
               color: 'grey'
             }}>
-            Example of SQLite Database in React Native
+            EpicTeam
           </Text>
           <Text
             style={{
