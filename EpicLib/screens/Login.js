@@ -35,17 +35,7 @@ export default function login({ navigation }) {
           "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
           [userTest.id, userTest.email, userTest.passwd, userTest.role]
         );
-
-        tx.executeSql(
-          "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
-          [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
-        );
-
-        tx.executeSql(
-          "insert into users (id_user, email, password, role) values (3, 'jentap', '1234', 'user')",
-          []
-        );
-    
+   
         tx.executeSql(
           "select * from users",
           [],
@@ -53,6 +43,13 @@ export default function login({ navigation }) {
           () => console.log("error fetching")
         );
     
+      });
+
+      db.transaction(tx => {
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
+          [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
+        );
       });
         
   }, []);
