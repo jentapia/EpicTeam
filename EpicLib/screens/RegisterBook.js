@@ -13,7 +13,7 @@ export default function RegisterBook({navigation}) {
     let [author, setAuthor] = useState('');
     let [cathegory, setCathegory] = useState('');
   
-    let register_user = () => {
+    let register_book = () => {
       console.log(book_id, book_name, author, cathegory);
   
       if (!book_id) {
@@ -33,7 +33,7 @@ export default function RegisterBook({navigation}) {
         return;
       }
 
-      db.transaction(function (tx) {
+      db.transaction((tx) => {
         tx.executeSql(
           'INSERT INTO table_books (book_id, book_name, author, cathegory) VALUES (?,?,?,?)',
           [book_id, book_name, author, cathegory],
@@ -98,8 +98,8 @@ export default function RegisterBook({navigation}) {
                   style={{ padding: 10 }}
                 />
 
-                <Button title="Submit" customClick={register_user} 
-                onPress={() => navigation.navigate('Home',{book_id: book_id, book_name: book_name, author: author, cathegory: cathegory} )} />
+                <Button title="Submit" customClick={register_book} />
+            
               </KeyboardAvoidingView>
             </ScrollView>
           </View>

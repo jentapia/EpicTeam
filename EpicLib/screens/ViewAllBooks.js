@@ -6,7 +6,7 @@ const db = SQLite.openDatabase('db.db');
 
   export default function ViewAllBooks({navigation}) {
   let [flatListItems, setFlatListItems] = useState([]);
-
+ 
   useEffect(() => {
     db.transaction((tx) => {
       tx.executeSql(
@@ -39,7 +39,7 @@ const db = SQLite.openDatabase('db.db');
       <View
         key={item.book_id}
         style={{ backgroundColor: 'white', padding: 20 }}>
-        <Text>Book id: {db.item.book_id}</Text>
+        <Text>Book id: {item.book_id}</Text>
         <Text>Book name: {item.book_name}</Text>
         <Text>Author: {item.author}</Text>
         <Text>Cathegorry: {item.cathegory}</Text>

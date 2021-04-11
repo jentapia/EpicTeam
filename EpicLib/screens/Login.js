@@ -52,6 +52,28 @@ export default function login({ navigation }) {
         );
       });
         
+      db.transaction(tx => {
+        tx.executeSql(
+        //  "SELECT book_id FROM sqlite_master WHERE type='table' AND name='table_books'",
+          //[],
+         // function (tx, res) {
+          //  console.log('item:', res.rows.length);
+           // if (res.rows.length == 0) {
+            //  tx.executeSql('DROP TABLE IF EXISTS table_books', []);
+             // tx.executeSql(
+                "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY NOT NULL, book_name TEXT, author TEXT, cathegory TEXT)",
+                []
+              );
+           // }
+         // }
+       // );
+       tx.executeSql(
+        "insert into table_books (book_id, book_name, author, cathegory) values (1, 'Papelucho', 'Marcela', ?)",
+        [userTest.role]
+      );
+
+      });
+
   }, []);
 
   const [email, setEmail] = useState("");
