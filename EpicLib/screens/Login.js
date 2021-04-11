@@ -51,6 +51,12 @@ export default function login({ navigation }) {
           [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
         );
       });
+      db.transaction(tx => {
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (3, 'jentap', '4321', ?)",
+          [userTest2.role]
+        );
+      });
         
   }, []);
 
