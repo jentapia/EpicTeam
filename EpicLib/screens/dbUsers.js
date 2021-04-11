@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 
-import * as SQLite from 'expo-sqlite';
+//from Jen
+ //import * as SQLite from 'expo-sqlite';
+ //const db = SQLite.openDatabase('db.db');
 
-const db = SQLite.openDatabase('db.db');
+
+
 
 export default function logInUser() {
 
