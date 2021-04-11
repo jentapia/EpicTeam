@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
 import Constants from 'expo-constants';
 import * as SQLite from 'expo-sqlite';
 
@@ -17,9 +17,21 @@ export default function Home({route, navigation}) {
       <Text>Hello, {email}. Welcome</Text>
       <Text>Your password: {password} is not secure.</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate('logUser')}>
-        <Text style={styles.next_button}>logUser</Text>
-      </TouchableOpacity>
+    
+      <Button
+              title="Find a user"
+              onPress={() => navigation.navigate('logUser')}
+            />
+
+      <Button
+              title="Register a book"
+              onPress={() => navigation.navigate('RegisterBook')}
+            />
+      <Button
+              title="View all books"
+              onPress={() => navigation.navigate('ViewAllBooks')}
+            />
+
     </View>
   );
 }

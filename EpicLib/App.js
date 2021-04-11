@@ -6,6 +6,8 @@ import login from './screens/Login';
 import Home from './screens/Home';
 import logInUser from './screens/dbUsers';
 import logUser from './screens/logUser';
+import RegisterBook from './screens/RegisterBook';
+import ViewAllBooks from './screens/ViewAllBooks';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +19,8 @@ function App() {
         <Stack.Screen name="Home" component={Home} options={{ title: 'EpicLib' }}/>
         <Stack.Screen name="dbUsers" component={logInUser} options={{ title: 'EpicLib' }}/>
         <Stack.Screen name="logUser" component={logUser} options={{ title: 'EpicLib' }}/>
+        <Stack.Screen name="RegisterBook" component={RegisterBook} options={{ title: 'EpicLib' }}/>
+        <Stack.Screen name="ViewAllBooks" component={ViewAllBooks} options={{ title: 'EpicLib' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
