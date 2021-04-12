@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 
 //from Jen
- //import * as SQLite from 'expo-sqlite';
- //const db = SQLite.openDatabase('db.db');
+ import * as SQLite from 'expo-sqlite';
+ const db = SQLite.openDatabase('db.db');
 
 
 

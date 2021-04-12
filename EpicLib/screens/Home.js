@@ -19,19 +19,19 @@ export default function Home({route, navigation}) {
 
     
       <Button
-              title="Find a user"
+              title="Find a user" style={styles.goButton}
               onPress={() => navigation.navigate('logUser')}
             />
 
       <Button
-              title="Register a book"
+              title="Register a book" style={styles.goButton}
               onPress={() => navigation.navigate('RegisterBook')}
             />
       <Button
-              title="View all books"
+              title="View all books" style={styles.goButton}
               onPress={() => navigation.navigate('ViewAllBooks')}
             />
-
+      
     </View>
   );
 }
@@ -44,9 +44,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   
-  next_button: {
+  goButton: {
+    width: "80%",
+    borderRadius: 25,
     height: 50,
-    marginBottom: 30,
-    marginTop: 30,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "deepskyblue",
   },
 });

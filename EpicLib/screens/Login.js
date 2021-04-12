@@ -2,12 +2,15 @@ import * as React from 'react';
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import Mybutton from './components/Mybutton';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.db');
 
 export default function login({ navigation }) {
   const [users, setUsers] = React.useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   var userTest = {
     id: 1,
     email: 'test@test.com',
@@ -48,7 +51,12 @@ export default function login({ navigation }) {
         );
     
       });
-
+      db.transaction(tx => {
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (3, 'jentap', '4321', ?)",
+          [userTest2.role]
+        );
+      });
              
       db.transaction(tx => {
         tx.executeSql(
@@ -65,8 +73,37 @@ export default function login({ navigation }) {
 
   }, []);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  let validUser = () => {
+    console.log(email, password);
+
+    if (!email) {
+      alert('Please fill Email');
+      return;
+    }
+    if (!password) {
+      alert('Please fill Password');
+      return;
+    }
+    
+    db.transaction(function (tx) {
+      tx.executeSql(
+        'SELECT * FROM users where email = ? and password = ?',
+          [email, password],
+          (tx, results) => {
+            var len = results.rows.length;
+            console.log('len', len);
+            if (len > 0) {
+
+              return navigation.navigate('Home', {email: email, password: password});
+              
+            }  else {
+              alert('Not valid User');
+            }
+          }
+      );
+    });
+  };
+
  
   return (
     <View style={styles.container}>
@@ -96,9 +133,8 @@ export default function login({ navigation }) {
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
  
-      <TouchableOpacity style={styles.loginBtn} onPress={ () => navigation.navigate('Home', {email: email, password: password})}>
-        <Text style={styles.loginText} >LOGIN</Text>
-      </TouchableOpacity>
+      <Mybutton title= "LOGIN" customClick={validUser}/>
+
     </View>
   );
 }
