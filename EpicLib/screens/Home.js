@@ -17,8 +17,18 @@ export default function Home({route, navigation}) {
       <Text>Hello, {email}. Welcome</Text>
       <Text>Your password: {password} is not secure.</Text>
 
-    
-      <Button
+      <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('logUser')}>
+      <Text style={styles.text} >Find a user</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('RegisterBook')}>
+        <Text style={styles.text} >Register a book</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('ViewAllBooks')}>
+        <Text style={styles.text} >View all books</Text>
+      </TouchableOpacity>
+      {/* <Button
               title="Find a user" style={styles.goButton}
               onPress={() => navigation.navigate('logUser')}
             />
@@ -30,7 +40,7 @@ export default function Home({route, navigation}) {
       <Button
               title="View all books" style={styles.goButton}
               onPress={() => navigation.navigate('ViewAllBooks')}
-            />
+            /> */}
       
     </View>
   );
@@ -44,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   
-  goButton: {
+  goBtn: {
     width: "80%",
     borderRadius: 25,
     height: 50,
@@ -53,5 +63,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 40,
     backgroundColor: "deepskyblue",
+  },
+  text: {
+    color: '#ffffff',
   },
 });
