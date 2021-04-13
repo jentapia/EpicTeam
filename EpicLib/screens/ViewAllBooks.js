@@ -42,7 +42,7 @@ const db = SQLite.openDatabase('db.db');
         <Text>Book id: {item.book_id}</Text>
         <Text>Book name: {item.book_name}</Text>
         <Text>Author: {item.author}</Text>
-        <Text>Cathegorry: {item.cathegory}</Text>
+        <Text>Cathegory: {item.cathegory}</Text>
       </View>
     );
   };
