@@ -25,6 +25,12 @@ export default function login({ navigation }) {
     role: 'user'
   }
 
+  var userTest3 = {
+    id: 3,
+    email: 'maru',
+    passwd: '2991',
+    role: 'user'
+  }
   React.useEffect(() => {
 
       db.transaction(tx => {
@@ -42,7 +48,10 @@ export default function login({ navigation }) {
           "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
           [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
         );
-   
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
+          [userTest3.id, userTest2.email, userTest3.passwd, userTest3.role]
+        );
         tx.executeSql(
           "select * from users",
           [],
@@ -55,6 +64,12 @@ export default function login({ navigation }) {
         tx.executeSql(
           "insert into users (id_user, email, password, role) values (3, 'jentap', '4321', ?)",
           [userTest2.role]
+        );
+      });
+      db.transaction(tx => {
+        tx.executeSql(
+          "insert into users (id_user, email, password, role) values (4, 'maru', '2991', ?)",
+          [userTest3.role]
         );
       });
              
