@@ -8,7 +8,7 @@ import logInUser from './screens/dbUsers';
 import logUser from './screens/logUser';
 import RegisterBook from './screens/RegisterBook';
 import ViewAllBooks from './screens/ViewAllBooks';
-
+import DeleteBook from './screns/Deleteooks';
 const Stack = createStackNavigator();
 
 
@@ -22,6 +22,7 @@ function App() {
         <Stack.Screen name="logUser" component={logUser} options={{ title: 'EpicLib' }}/>
         <Stack.Screen name="RegisterBook" component={RegisterBook} options={{ title: 'EpicLib' }}/>
         <Stack.Screen name="ViewAllBooks" component={ViewAllBooks} options={{ title: 'EpicLib' }}/>
+        <Stack.Screen name="DeleteBook" component={DeleteBook} options={{ title: 'EpicLib' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -28,6 +28,9 @@ export default function Home({route, navigation}) {
       <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('ViewAllBooks')}>
         <Text style={styles.text} >View all books</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('DeleteBook')}>
+        <Text style={styles.text} >Delete a Book</Text>
+      </TouchableOpacity>
       {/* <Button
               title="Find a user" style={styles.goButton}
               onPress={() => navigation.navigate('logUser')}
