@@ -8,7 +8,9 @@ import logInUser from './screens/dbUsers';
 import logUser from './screens/logUser';
 import RegisterBook from './screens/RegisterBook';
 import ViewAllBooks from './screens/ViewAllBooks';
-import DeleteBook from './screns/Deleteooks';
+import DeleteBook from './screens/DeleteBook';
+import RegisterNewUser from './screens/RegisterNewUser';
+
 const Stack = createStackNavigator();
 
 
