@@ -25,7 +25,7 @@ function App() {
         <Stack.Screen name="RegisterBook" component={RegisterBook} options={{ title: 'EpicLib' }}/>
         <Stack.Screen name="ViewAllBooks" component={ViewAllBooks} options={{ title: 'EpicLib' }}/>
         <Stack.Screen name="DeleteBook" component={DeleteBook} options={{ title: 'EpicLib' }}/>
-        <Stack.Screen name="RegisterNewUser" component={RegisterNewUser} options={{ title: 'EpicLib' }}/>
+        <Stack.Screen name="RegisterNewUser" component={RegisterNewUser} options={{ title: 'EpicLib' }}/>     //component added for the RegisterNewUser screen
       </Stack.Navigator>
     </NavigationContainer>
   );
