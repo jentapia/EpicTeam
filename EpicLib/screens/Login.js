@@ -56,18 +56,18 @@ export default function login({ navigation }) {
         tx.executeSql('DROP TABLE IF EXISTS users', []); // The table users is dropped if exists in the DB 
 
         tx.executeSql(
-          "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY NOT NULL, email TEXT, passwd TEXT, role TEXT);",
+          "CREATE TABLE IF NOT EXISTS users (id_user integer primary key AUTOINCREMENT, email TEXT, passwd TEXT, role TEXT);",
           []
         );
         tx.executeSql(
-         "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
-         [userTest.id, userTest.email, userTest.passwd, userTest.role]
+         "insert into users (email, password, role) values (?, ?, ?)",
+         [userTest.email, userTest.passwd, userTest.role]
        );
          
       });
              
       db.transaction(tx => {
-        tx.executeSql('DROP TABLE IF EXISTS table_books', []);
+        tx.executeSql('DROP TABLE IF EXISTS table_books', []);    
         tx.executeSql(
           "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY NOT NULL, book_name TEXT, author TEXT, cathegory TEXT)",
           []

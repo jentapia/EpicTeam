@@ -14,18 +14,15 @@ const db = SQLite.openDatabase('db.db');
 //Main function
 export default function RegisterNewUser({navigation}) {
 
-    let [id_user, setId_user] = useState('');
+   
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
     let [role, setRole] = useState('');
   
     let register_NewUser = () => {
-      console.log(id_user, email, password, role);
+      console.log( email, password, role);
       //Validation of the input, in case there is nothing added, request it
-      if (!id_user) {
-        alert('Please fill Id');
-        return;
-      }
+      
       if (!email) {
         alert('Please fill the Email');
         return;
@@ -42,8 +39,8 @@ export default function RegisterNewUser({navigation}) {
       db.transaction(function (tx) {
         //execution of the query to insert the data
         tx.executeSql(
-          'INSERT INTO users (id_user, email, password, role) VALUES (?,?,?,?)',
-          [id_user, email, password, role],
+          'INSERT INTO users (email, password, role) VALUES (?,?,?)',
+          [email, password, role],
           (tx, results) => {
             console.log('Results', results.rowsAffected);
             //validating there are information added
@@ -75,13 +72,7 @@ export default function RegisterNewUser({navigation}) {
               <KeyboardAvoidingView
                 behavior="padding"
                 style={{ flex: 1, justifyContent: 'space-between' }}>
-                <Mytextinput
-                  placeholder="Enter your Id"
-                  onChangeText={
-                    (id_user) => setId_user(id_user)    
-                  }
-                  style={{ padding: 10 }}
-                />
+                
                 <Mytextinput
                   placeholder="Enter your Email"
                   onChangeText={
