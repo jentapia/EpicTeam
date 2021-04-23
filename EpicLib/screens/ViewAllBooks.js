@@ -4,7 +4,7 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.db');
 
-  export default function ViewAllBooks({navigation}) {
+  export default function ViewAllBooks() {
   let [flatListItems, setFlatListItems] = useState([]);
  
   useEffect(() => {
