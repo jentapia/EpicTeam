@@ -11,9 +11,10 @@ import ViewAllBooks from './screens/ViewAllBooks';
 import DeleteBook from './screens/DeleteBook';
 import RegisterNewUser from './screens/RegisterNewUser';
 
+// function to navigate around all the pages.
 const Stack = createStackNavigator();
 
-
+//every page implemented must be writen here in order to connect the app.
 function App() {
   return (
     <NavigationContainer>
