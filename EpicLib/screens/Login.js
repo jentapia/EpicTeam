@@ -13,9 +13,9 @@ export default function login({ navigation }) {
   const [password, setPassword] = useState("");
   
   var userTest = {
-    id: 1,
+    id: 2,
     email: 'test',
-    passwd: '1234',
+    password: '1234',
     role: 'admin'
   }
   var books = [{
@@ -56,12 +56,12 @@ export default function login({ navigation }) {
         tx.executeSql('DROP TABLE IF EXISTS users', []); // The table users is dropped if exists in the DB 
 
         tx.executeSql(
-          "CREATE TABLE IF NOT EXISTS users (id_user integer primary key AUTOINCREMENT, email TEXT, passwd TEXT, role TEXT);",
+          "CREATE TABLE IF NOT EXISTS users (id_user integer primary key AUTOINCREMENT, email TEXT, password TEXT, role TEXT);",
           []
         );
         tx.executeSql(
          "insert into users (email, password, role) values (?, ?, ?)",
-         [userTest.email, userTest.passwd, userTest.role]
+         [userTest.email, userTest.password, userTest.role]
        );
          
       });

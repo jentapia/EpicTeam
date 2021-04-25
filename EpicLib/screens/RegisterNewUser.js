@@ -87,7 +87,7 @@ export default function RegisterNewUser({navigation}) {
                     (password) => setPassword(password)
                   }
                   maxLength={225}
-                  numberOfLines={30}
+                  //numberOfLines={30}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
                 <Mytextinput
