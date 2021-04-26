@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, View, SafeAreaView, Button } from 'react-native';
+//import the library to use sqlite
 import * as SQLite from 'expo-sqlite';
-
+//open he data base
 const db = SQLite.openDatabase('db.db');
 
-  export default function ViewAllBooks({navigation}) {
+  export default function ViewAllBooks() {
   let [flatListItems, setFlatListItems] = useState([]);
- 
+
+ //function to select the values on data base.
   useEffect(() => {
     db.transaction((tx) => {
       tx.executeSql(
         'SELECT * FROM table_books',
         [],
+        //callBack to send the query to data base and bring the rows found
         (tx, results) => {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)
@@ -34,6 +37,7 @@ const db = SQLite.openDatabase('db.db');
     );
   };
 
+  // return the value received from the sql query
   let listItemView = (item) => {
     return (
       <View

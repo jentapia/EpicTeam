@@ -13,65 +13,75 @@ export default function login({ navigation }) {
   const [password, setPassword] = useState("");
   
   var userTest = {
-    id: 1,
-    email: 'test@test.com',
-    passwd: '1234',
+    id: 2,
+    email: 'test',
+    password: '1234',
     role: 'admin'
   }
-
-  var userTest2 = {
-    id: 2,
-    email: 'mitzy',
-    passwd: '123456',
-    role: 'user'
-  }
+  var books = [{
+    Book_id: 1,
+    Book_name: "Papelucho",
+    Author: "Marcela Paz",
+    Cathegory: "Fantasy"
+  },
+  {
+    Book_id: 2,
+    Book_name: "Pride and Prejudice",
+    Author: "Jane Austen",
+    Cathegory: "Novel"
+  },
+  {
+    Book_id: 3,
+    Book_name: "La casa de los espiritus",
+    Author: "Isabel Allende",
+    Cathegory: "Novel"
+  },
+  {
+    Book_id: 4,
+    Book_name: "El Quijote de La Mancha",
+    Author: "Miguel de Cervantes",
+    Cathegory: "Novel"
+  },
+  {
+    Book_id: 5,
+    Book_name: "The lord of the rings",
+    Author: "JRR Tolkien",
+    Cathegory: "Fantasy"
+  }];
 
   React.useEffect(() => {
 
       db.transaction(tx => {
     
+        tx.executeSql('DROP TABLE IF EXISTS users', []); // The table users is dropped if exists in the DB 
+
         tx.executeSql(
-          "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY NOT NULL, email TEXT, passwd TEXT, role TEXT);",
+          "CREATE TABLE IF NOT EXISTS users (id_user integer primary key AUTOINCREMENT, email TEXT, password TEXT, role TEXT);",
           []
         );
         tx.executeSql(
-          "insert into users (id_user, email, password, role) values (4, 'danilopincheiram@gmail.com', '1234567', admin)",
+         "insert into users (email, password, role) values (?, ?, ?)",
+         [userTest.email, userTest.password, userTest.role]
+       );
          
-        );
-      //  tx.executeSql(
-        //  "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
-       //   [userTest.id, userTest.email, userTest.passwd, userTest.role]
-       // );
-        //tx.executeSql(
-         // "insert into users (id_user, email, password, role) values (?, ?, ?, ?)",
-         // [userTest2.id, userTest2.email, userTest2.passwd, userTest2.role]
-       // );
-   
-     //    tx.executeSql(
-       //   "select * from users",
-         // [],
-          //(_, { rows: { _array } }) => setUsers(_array),
-          //() => console.log("error fetching")
-        //);
-    
-      //});
-      //db.transaction(tx => {
-        //tx.executeSql(
-         // "insert into users (id_user, email, password, role) values (3, 'jentap', '4321', ?)",
-         // [userTest2.role]
-        //);
       });
              
       db.transaction(tx => {
+        tx.executeSql('DROP TABLE IF EXISTS table_books', []);    
         tx.executeSql(
-          "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY NOT NULL, book_name TEXT, author TEXT, cathegory TEXT)",
+          "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, book_name TEXT, author TEXT, cathegory TEXT)",
           []
         );
+        for (let i = 0; i < books.length; i++){
+          tx.executeSql(
+            "insert into table_books (book_name, author, cathegory) values (?, ?, ?)",
+            [books[i].Book_name, books[i].Author, books[i].Cathegory]
+        );}
 
-        tx.executeSql(
+     /*    tx.executeSql(
         "insert into table_books (book_id, book_name, author, cathegory) values (1, 'Papelucho', 'Marcela', ?)",
         [userTest.role]
-      );
+      ); */
 
       });
 
@@ -95,11 +105,22 @@ export default function login({ navigation }) {
           [email, password],
           (tx, results) => {
             var len = results.rows.length;
+            var temp = "";
             console.log('len', len);
             if (len > 0) {
+              temp = results.rows.item(0);
+              console.log(temp);
 
-              return navigation.navigate('Home', {email: email, password: password});
-              
+              if (temp.role == 'admin'){
+
+                return navigation.navigate('Home', {email: email, password: password});
+  
+                }
+  
+                else{
+                  return navigation.navigate('ViewAllBooks');
+                }
+                
             }  else {
               alert('Not valid User');
             }

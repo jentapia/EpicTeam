@@ -1,27 +1,28 @@
+/**
+ * Screen to add a new user to the database
+ * Import of the components
+ */
 import React, { useState } from 'react';
 import { View, ScrollView, KeyboardAvoidingView, Alert, SafeAreaView,Text, Button, TextInput} from 'react-native';
 import Mytextinput from './components/Mytextinput';
 import Mybutton from './components/Mybutton';
-
+//Import from the library
 import * as SQLite from 'expo-sqlite';
-
+//variable used to open database
 const db = SQLite.openDatabase('db.db');
 
-
+//Main function
 export default function RegisterNewUser({navigation}) {
 
-    let [id_user, setId_user] = useState('');
+   
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
     let [role, setRole] = useState('');
   
     let register_NewUser = () => {
-      console.log(id_user, email, password, role);
-  
-      if (!id_user) {
-        alert('Please fill Id');
-        return;
-      }
+      console.log( email, password, role);
+      //Validation of the input, in case there is nothing added, request it
+      
       if (!email) {
         alert('Please fill the Email');
         return;
@@ -36,12 +37,14 @@ export default function RegisterNewUser({navigation}) {
       }
 
       db.transaction(function (tx) {
+        //execution of the query to insert the data
         tx.executeSql(
-          'INSERT INTO users (id_user, email, password, role) VALUES (?,?,?,?)',
-          [id_user, email, password, role],
+          'INSERT INTO users (email, password, role) VALUES (?,?,?)',
+          [email, password, role],
           (tx, results) => {
             console.log('Results', results.rowsAffected);
-            if (results.rowsAffected > 0) {
+            //validating there are information added
+            if (results.rowsAffected > 0) {               
               alert(
                 'Success',
                 'Your are Registered Successfully',
@@ -53,6 +56,7 @@ export default function RegisterNewUser({navigation}) {
                 ],
                 { cancelable: false }
               );
+              //in case there is an error to add information, display it
             } else alert('Registration Failed');
           }
         );
@@ -60,6 +64,7 @@ export default function RegisterNewUser({navigation}) {
     };
   
     return (
+      //definition of styles
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
           <View style={{ flex: 1 }}>
@@ -67,13 +72,7 @@ export default function RegisterNewUser({navigation}) {
               <KeyboardAvoidingView
                 behavior="padding"
                 style={{ flex: 1, justifyContent: 'space-between' }}>
-                <Mytextinput
-                  placeholder="Enter your Id"
-                  onChangeText={
-                    (id_user) => setId_user(id_user)
-                  }
-                  style={{ padding: 10 }}
-                />
+                
                 <Mytextinput
                   placeholder="Enter your Email"
                   onChangeText={
@@ -88,7 +87,7 @@ export default function RegisterNewUser({navigation}) {
                     (password) => setPassword(password)
                   }
                   maxLength={225}
-                  numberOfLines={30}
+                  //numberOfLines={30}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
                 <Mytextinput

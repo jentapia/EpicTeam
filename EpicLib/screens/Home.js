@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
 import Constants from 'expo-constants';
+//library of sqlite
 import * as SQLite from 'expo-sqlite';
-
+//open data base.
 const db = SQLite.openDatabase('db.db');
 
-
+//home page.
 export default function Home({route, navigation}) {
-
+ //parameters sent from the login page.
   const {email, password} = route.params;
-
+ 
+  //buttons to navigate in the pages. 
   return (
     
     <View style={styles.container}>
@@ -19,6 +21,9 @@ export default function Home({route, navigation}) {
 
       <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('logUser')}>
       <Text style={styles.text} >Find a user</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('DeleteUser')}>
+        <Text style={styles.text} >Delete a User</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('RegisterBook')}>
@@ -31,19 +36,7 @@ export default function Home({route, navigation}) {
       <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('DeleteBook')}>
         <Text style={styles.text} >Delete a Book</Text>
       </TouchableOpacity>
-      {/* <Button
-              title="Find a user" style={styles.goButton}
-              onPress={() => navigation.navigate('logUser')}
-            />
-
-      <Button
-              title="Register a book" style={styles.goButton}
-              onPress={() => navigation.navigate('RegisterBook')}
-            />
-      <Button
-              title="View all books" style={styles.goButton}
-              onPress={() => navigation.navigate('ViewAllBooks')}
-            /> */}
+    
       
     </View>
   );
