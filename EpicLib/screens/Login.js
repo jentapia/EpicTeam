@@ -105,12 +105,13 @@ export default function login({ navigation }) {
           [email, password],
           (tx, results) => {
             var len = results.rows.length;
-            
+            var temp = "";
             console.log('len', len);
             if (len > 0) {
-              var role = results.rows[0].role;
+              temp = results.rows.item(0);
+              console.log(temp);
 
-              if (role == 'admin'){
+              if (temp.role == 'admin'){
 
                 return navigation.navigate('Home', {email: email, password: password});
   
