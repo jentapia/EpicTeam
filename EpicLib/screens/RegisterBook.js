@@ -18,10 +18,10 @@ export default function RegisterBook({navigation}) {
     let register_book = () => {
       console.log(book_id, book_name, author, cathegory);
    //check there is something to fill the imputs.
-      if (!book_id) {
+    /*   if (!book_id) {
         alert('Please fill book id');
         return;
-      }
+      } */
       if (!book_name) {
         alert('Please fill Book Name');
         return;
@@ -38,8 +38,8 @@ export default function RegisterBook({navigation}) {
       //insert the values in the data base.
       db.transaction(function (tx) {
         tx.executeSql(
-          'INSERT INTO table_books (book_id, book_name, author, cathegory) VALUES (?,?,?,?)',
-          [book_id, book_name, author, cathegory],
+          'INSERT INTO table_books (book_name, author, cathegory) VALUES (?,?,?)',
+          [book_name, author, cathegory],
           (tx, results) => {
             console.log('Results', results.rowsAffected);
             if (results.rowsAffected > 0) {
@@ -72,13 +72,13 @@ export default function RegisterBook({navigation}) {
                 behavior="padding"
                 style={{ flex: 1, justifyContent: 'space-between' }}>
                   
-                <Mytextinput
+              {/*   <Mytextinput
                   placeholder="Enter id of the book"
                   onChangeText={
                     (book_id) => setBook_id(book_id)
                   }
                   style={{ padding: 10 }}
-                /> 
+                />  */}
                 <Mytextinput
                   placeholder="Enter the name of the book"
                   onChangeText={

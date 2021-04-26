@@ -69,13 +69,13 @@ export default function login({ navigation }) {
       db.transaction(tx => {
         tx.executeSql('DROP TABLE IF EXISTS table_books', []);    
         tx.executeSql(
-          "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY NOT NULL, book_name TEXT, author TEXT, cathegory TEXT)",
+          "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, book_name TEXT, author TEXT, cathegory TEXT)",
           []
         );
         for (let i = 0; i < books.length; i++){
           tx.executeSql(
-          "insert into table_books (book_id, book_name, author, cathegory) values (?, ?, ?, ?)",
-          [books[i].Book_id, books[i].Book_name, books[i].Author, books[i].Cathegory]
+            "insert into table_books (book_name, author, cathegory) values (?, ?, ?)",
+            [books[i].Book_name, books[i].Author, books[i].Cathegory]
         );}
 
      /*    tx.executeSql(
@@ -105,11 +105,20 @@ export default function login({ navigation }) {
           [email, password],
           (tx, results) => {
             var len = results.rows.length;
+            var role = results.rows[0].role;
             console.log('len', len);
             if (len > 0) {
 
-              return navigation.navigate('Home', {email: email, password: password});
-              
+              if (role == 'admin'){
+
+                return navigation.navigate('Home', {email: email, password: password});
+  
+                }
+  
+                else{
+                  return navigation.navigate('ViewAllBooks');
+                }
+                
             }  else {
               alert('Not valid User');
             }
