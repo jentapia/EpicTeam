@@ -105,9 +105,10 @@ export default function login({ navigation }) {
           [email, password],
           (tx, results) => {
             var len = results.rows.length;
-            var role = results.rows[0].role;
+            
             console.log('len', len);
             if (len > 0) {
+              var role = results.rows[0].role;
 
               if (role == 'admin'){
 
