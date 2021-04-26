@@ -7,7 +7,7 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.db');
 
-export default function logUser({navigation}){
+export default function findUser({navigation}){
     let [inputUserId, setInputUserId] = useState('');
     let [userData, setUserData] = useState({});
   

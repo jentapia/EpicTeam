@@ -154,8 +154,8 @@ export default function login({ navigation }) {
         />
       </View>
  
-      <TouchableOpacity onPress={() => navigation.navigate('dbUsers')}>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('ListUsers')}>
+        <Text style={styles.testing_button}>Testing</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('RegisterNewUser')}>
@@ -197,11 +197,17 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
  
+  testing_button: {
+    height: 30,
+    marginBottom: 30,
+    color: "lightgrey",
+  },
+ 
   forgot_button: {
     height: 30,
     marginBottom: 30,
   },
- 
+
   loginBtn: {
     width: "80%",
     borderRadius: 25,

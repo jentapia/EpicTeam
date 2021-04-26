@@ -6,7 +6,7 @@ import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
  const db = SQLite.openDatabase('db.db');
 
 
-export default function logInUser() {
+export default function listUser() {
 
   const [users, setUsers] = useState(null);
   let [flatListItems, setFlatListItems] = useState([]);
