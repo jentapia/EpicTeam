@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 
-//from Jen
- import * as SQLite from 'expo-sqlite';
- const db = SQLite.openDatabase('db.db');
+import * as SQLite from 'expo-sqlite'; // expo-sqlite library 
 
+const db = SQLite.openDatabase('db.db'); //Open a database, creating it if it doesn't exist, and return a Database object.
 
+// listUser: function that lists all users in the database
 export default function listUser() {
-
-  const [users, setUsers] = useState(null);
+  //variable that stores the result returned by the query
   let [flatListItems, setFlatListItems] = useState([]);
   
   useEffect(() => {
     db.transaction((tx) => {
+      //query to the database
       tx.executeSql('SELECT * FROM users', [], (tx, results) => {
         var temp = [];
         for (let i = 0; i < results.rows.length; ++i)
-          temp.push(results.rows.item(i));
+          temp.push(results.rows.item(i)); //saving each row of the result returned by the query (using a for-loop to go through)
         setFlatListItems(temp);
       });
     });
@@ -29,7 +29,8 @@ export default function listUser() {
       />
     );
   };
-  
+
+  //variable that returns a view with the data of each user
   let listItemView = (item) => {
     return (
       <View
@@ -42,7 +43,7 @@ export default function listUser() {
       </View>
     );
   };
-
+  // screen ListUsers
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
