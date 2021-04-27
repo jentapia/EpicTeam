@@ -11,6 +11,7 @@ import ViewAllBooks from './screens/ViewAllBooks';
 import DeleteBook from './screens/DeleteBook';
 import RegisterNewUser from './screens/RegisterNewUser';
 import DeleteUser from './screens/DeleteUser';
+import UserSearchBook from './screens/UserSearchBook';
 
 // function to navigate around all the pages.
 const Stack = createStackNavigator();
@@ -29,6 +30,7 @@ function App() {
         <Stack.Screen name="DeleteBook" component={DeleteBook} options={{ title: 'EpicLib' }}/>
         <Stack.Screen name="RegisterNewUser" component={RegisterNewUser} options={{ title: 'EpicLib' }}/>    
         <Stack.Screen name="DeleteUser" component={DeleteUser} options={{ title: 'EpicLib' }}/>  
+        <Stack.Screen name="UserSearchBook" component={UserSearchBook} options={{ title: 'EpicLib' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

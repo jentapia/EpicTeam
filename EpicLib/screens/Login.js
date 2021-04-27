@@ -128,8 +128,8 @@ export default function login({ navigation }) {
                 }
   
                 else{
-                // if the role of the user is not admin, the app goes to the ViewAllBooks screen
-                  return navigation.navigate('ViewAllBooks');
+                // if the role of the user is not admin, the app goes to the UserSearchBook screen
+                  return navigation.navigate('UserSearchBook');
                 }
                 
             }  else {
