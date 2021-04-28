@@ -19,7 +19,7 @@ export default function Home({route, navigation}) {
       <Text>Hello, {email}. Welcome</Text>
       <Text>Your password: {password} is not secure.</Text>
 
-      <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('logUser')}>
+      <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('FindUser')}>
       <Text style={styles.text} >Find a user</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('DeleteUser')}>
