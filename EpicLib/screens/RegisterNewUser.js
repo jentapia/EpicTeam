@@ -24,24 +24,20 @@ export default function RegisterNewUser({navigation}) {
     let validate = (text) => {
       console.log(text);
       //pattern to compare the input:
-      // - at least one letter and '.' and/or '-'
+      // - at least one letter and also accepts '.' and/or '-'
       // - '@' once
       // - at least one letter after the '@' and '.' and/or '-'
       // - the '.' and two or more letters
       let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;        
-      //let reg= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/;
+      
 
       if (reg.test(text) === false) {   //test the email with the pattern above described (letter by letter)
-        console.log("Email is Not Correct");    
-        //alert ('Email not valid');
-        // empty the email variable
-        setEmail('');               
+        console.log("Email is Not Correct");               
         return false;
       }
       else {
         //valid email
         setEmail(text);
-        //alert ('Email valid')
         console.log("Email is Correct");
       }
     }

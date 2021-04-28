@@ -151,6 +151,10 @@ export default function login({ navigation }) {
           style={styles.TextInput}
           placeholder="Email."
           placeholderTextColor="#003f5c"
+          //set the characters in lowercase on the keyboard
+          autoCapitalize="none" 
+          //it shows email syntax on the keyboard
+          keyboardType="email-address"
           onChangeText={(email) => setEmail(email)}
         />
       </View>
