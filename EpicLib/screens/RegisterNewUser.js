@@ -20,12 +20,40 @@ export default function RegisterNewUser({navigation}) {
     let [password, setPassword] = useState('');
     let [role, setRole] = useState('');
   
+    //function to validate email
+    let validate = (text) => {
+      console.log(text);
+      //pattern to compare the input:
+      // - at least one letter and '.' and/or '-'
+      // - '@' once
+      // - at least one letter after the '@' and '.' and/or '-'
+      // - the '.' and two or more letters
+      let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;        
+      //let reg= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/;
+
+      if (reg.test(text) === false) {   //test the email with the pattern above described (letter by letter)
+        console.log("Email is Not Correct");    
+        //alert ('Email not valid');
+        // empty the email variable
+        setEmail('');               
+        return false;
+      }
+      else {
+        //valid email
+        setEmail(text);
+        //alert ('Email valid')
+        console.log("Email is Correct");
+      }
+    }
+
+
     let register_NewUser = () => {
       console.log( email, password, role);
       //Validation of the input, in case there is nothing added, request it
       
+      //if email is empty
       if (!email) {
-        alert('Please fill the Email');
+        alert('Please fill a valid Email');
         return;
       }
       if (!password) {
@@ -76,9 +104,11 @@ export default function RegisterNewUser({navigation}) {
                 
                 <Mytextinput
                   placeholder="Enter your Email"
-                  onChangeText={
-                    (email) => setEmail(email)
-                  }
+                  //to initializate the keyboard on lowercase
+                  autoCapitalize="none"           
+                  //call the validate function
+                  onChangeText={(email) => validate(email)}
+
                   maxLength={30}
                   style={{ padding: 10 }}
                 />
