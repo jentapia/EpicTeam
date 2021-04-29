@@ -26,6 +26,8 @@ const Mytextinput = (props) => {
         style={props.style}
         blurOnSubmit={false}
         value={props.value}
+        autoCapitalize={props.autoCapitalize}
+        keyboardType={props.keyboardType}
       />
     </View>
   );

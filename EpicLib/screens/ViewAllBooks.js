@@ -62,22 +62,7 @@ const db = SQLite.openDatabase('db.db');
             renderItem={({ item }) => listItemView(item)}
           />
         </View>
-        <Text
-          style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-       
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
         
-        </Text>
       </View>
     </SafeAreaView>
   );

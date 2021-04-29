@@ -6,7 +6,7 @@ import * as SQLite from 'expo-sqlite';
 //open data base.
 const db = SQLite.openDatabase('db.db');
 
-//home page.
+//home page of the user with Admin role.
 export default function Home({route, navigation}) {
  //parameters sent from the login page.
   const {email, password} = route.params;
@@ -16,8 +16,13 @@ export default function Home({route, navigation}) {
     
     <View style={styles.container}>
       
-      <Text>Hello, {email}. Welcome</Text>
+      <Text style={styles.mytext}>Hello, {email}. Welcome</Text>
       <Text>Your password: {password} is not secure.</Text>
+      
+      {/* button to test user books view */}
+      <TouchableOpacity onPress={() => navigation.navigate('UserSearchBook')}>
+        <Text style={styles.testing_button}>User View</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity style={styles.goBtn} onPress={() => navigation.navigate('FindUser')}>
       <Text style={styles.text} >Find a user</Text>
@@ -57,10 +62,22 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 30,
     backgroundColor: "deepskyblue",
+  },
+  mytext: {
+    color: '#111825',
+    fontSize: 18,
+    marginTop: 16,
+    marginLeft: 35,
+    marginRight: 35,
   },
   text: {
     color: '#ffffff',
+  },
+  testing_button: {
+    height: 30,
+    marginTop: 10,
+    color: "grey",
   },
 });

@@ -50,13 +50,7 @@ export default function DeleteBook ({ navigation }) {
           />
           <Mybutton title="Delete Book" customClick={deleteBook} />
         </View>
-        <Text
-          style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-        </Text>
+        
         <Text
           style={{
             fontSize: 16,

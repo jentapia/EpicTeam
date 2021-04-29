@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import { Text, View, Alert, SafeAreaView } from 'react-native';
 import Mytextinput from './components/Mytextinput';
 import Mybutton from './components/Mybutton';
-import * as SQLite from 'expo-sqlite';
+import * as SQLite from 'expo-sqlite'; //expo-sqlite library that provides access to an SQLite DB
 
-const db = SQLite.openDatabase('db.db');
+const db = SQLite.openDatabase('db.db'); //Open a database, creating it if it doesn't exist, and return a Database object.
+
+/**
+ * the DeleteUser function shows a text input where the user enters the id_user 
+ * that wants to delete. 
+ * Also, it is conditioned that the user to delete is not the user test.
+ */
  
 export default function DeleteUser ({ navigation }) {
   let [inputUserId, setInputUserId] = useState('');
@@ -53,13 +59,7 @@ export default function DeleteUser ({ navigation }) {
           />
           <Mybutton title="Delete User" customClick={deleteuser} />
         </View>
-        <Text
-          style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-        </Text>
+        
         <Text
           style={{
             fontSize: 16,

@@ -89,7 +89,7 @@ export default function RegisterNewUser({navigation}) {
     };
   
     return (
-      //definition of styles
+      
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
           <View style={{ flex: 1 }}>
@@ -101,7 +101,8 @@ export default function RegisterNewUser({navigation}) {
                 <Mytextinput
                   placeholder="Enter your Email"
                   //to initializate the keyboard on lowercase
-                  autoCapitalize="none"           
+                  autoCapitalize="none"
+                  keyboardType="email-address"           
                   //call the validate function
                   onChangeText={(email) => validate(email)}
 
@@ -114,7 +115,6 @@ export default function RegisterNewUser({navigation}) {
                     (password) => setPassword(password)
                   }
                   maxLength={225}
-                  //numberOfLines={30}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
                 
@@ -135,25 +135,20 @@ export default function RegisterNewUser({navigation}) {
               </KeyboardAvoidingView>
             </ScrollView>
           </View>
-          <Text
-            style={{
-              fontSize: 18,
-              textAlign: 'center',
-              color: 'grey'
-            }}>
-            EpicTeam
-          </Text>
+          
           <Text
             style={{
               fontSize: 16,
               textAlign: 'center',
               color: 'grey'
             }}>
+              EpicTeam
           </Text>
         </View>
       </SafeAreaView>
     );
   };
+  //definition of styles
   const styles = StyleSheet.create({
     viewPick: {
       marginLeft: 35,

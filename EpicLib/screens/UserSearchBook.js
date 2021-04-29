@@ -6,10 +6,15 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.db');
 
+/**
+ * UserSearchBook shows a screen with the list of books and a book finder
+ * The Select query to the DB ask for the name of the book or part of it
+*/
   export default function UserSearchBook({navigation}) {
-  let [flatListItems, setFlatListItems] = useState([]);
-  let [inputBookName, setInputBookName] = useState('');
+  let [flatListItems, setFlatListItems] = useState([]); // variable to storage the result of the query
+  let [inputBookName, setInputBookName] = useState(''); //variable to storage the user input
  
+  //Select for all books
   useEffect(() => {
     db.transaction((tx) => {
       tx.executeSql(
@@ -25,6 +30,7 @@ const db = SQLite.openDatabase('db.db');
     });
   }, []);
 
+  //Select for books that contains the user input in their title
   let searchBook = () => {
     db.transaction((tx) => {
       tx.executeSql(
@@ -36,14 +42,14 @@ const db = SQLite.openDatabase('db.db');
             if (results.rows.length > 0) {
                 for (let i = 0; i < results.rows.length; ++i){
                 temp.push(results.rows.item(i));
-                setFlatListItems(temp);
+                setFlatListItems(temp); //setting in the variable flatListItems the list of results from the query
                 }
                 return(
-                            
+                // View of the list of books after the search of the user           
                 <View style={{ flex: 1, backgroundColor: 'white' }}>
                     <View style={{ flex: 1 }}>
                     <FlatList
-                        data={flatListItems}
+                        data={flatListItems} 
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => listItemView(item)}
                     />
@@ -60,7 +66,7 @@ const db = SQLite.openDatabase('db.db');
       );
     });
   };
-
+  //Format for displaying each book
   let listItemView = (item) => {
     return (
       <View
@@ -80,6 +86,9 @@ const db = SQLite.openDatabase('db.db');
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         
         <View style={{ flex: 1 }}>
+
+        {/* The user input is set to inputBookName with a % symbol at the beginning and end of the string 
+            to query the database if the string is part of the title */}
         <Mytextinput
             placeholder="Enter Book Name"
             onChangeText={
@@ -87,8 +96,11 @@ const db = SQLite.openDatabase('db.db');
             }
             style={{ padding: 10 }}
           />
-        <Mybutton title="Search Book" customClick={searchBook} />
+
+          {/* Calling to the searchBook function */}
+        <Mybutton title="Search Book" customClick={searchBook} /> 
         
+        {/* View of the list of books before the search of the user  */}
           <FlatList
             data={flatListItems}
             keyExtractor={(item, index) => index.toString()}

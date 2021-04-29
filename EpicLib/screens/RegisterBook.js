@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, ScrollView, KeyboardAvoidingView, Alert, SafeAreaView,Text, Button, TextInput} from 'react-native';
+import { View, ScrollView, KeyboardAvoidingView, Alert, SafeAreaView,Text, StyleSheet} from 'react-native';
 import Mytextinput from './components/Mytextinput';
 import Mybutton from './components/Mybutton';
+import {Picker} from '@react-native-picker/picker';
 //import the library to use sqlite
 import * as SQLite from 'expo-sqlite';
 //open the database
@@ -72,19 +73,12 @@ export default function RegisterBook({navigation}) {
                 behavior="padding"
                 style={{ flex: 1, justifyContent: 'space-between' }}>
                   
-              {/*   <Mytextinput
-                  placeholder="Enter id of the book"
-                  onChangeText={
-                    (book_id) => setBook_id(book_id)
-                  }
-                  style={{ padding: 10 }}
-                />  */}
                 <Mytextinput
                   placeholder="Enter the name of the book"
                   onChangeText={
                     (book_name) => setBook_name(book_name)
                   }
-                  maxLength={30}
+                  maxLength={50}
                   style={{ padding: 10 }}
                 />
                 <Mytextinput
@@ -92,39 +86,60 @@ export default function RegisterBook({navigation}) {
                   onChangeText={
                     (author) => setAuthor(author)
                   }
-                  maxLength={225}
-                  numberOfLines={30}
+                  maxLength={50}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
-                <Mytextinput
+                {/* <Mytextinput
                   placeholder="Enter Cathegory of the book"
                   onChangeText={
                     (cathegory) => setCathegory(cathegory)
                   }
                   style={{ padding: 10 }}
-                />
+                /> */}
+                <View style={styles.viewPick}>
+                  <Picker
+                    selectedValue={cathegory}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setCathegory(itemValue)
+                    } style={{ padding: 10, color: '#007FFF', borderColor: 'white'}}>
+                    <Picker.Item label="Select a Cathegory" value=" " />
+                    <Picker.Item label="Adventure" value="Adventure" />
+                    <Picker.Item label="Classic" value="Classic" />
+                    <Picker.Item label="Comic Book" value="Comic Book" />
+                    <Picker.Item label="Fantasy" value="Fantasy" />
+                    <Picker.Item label="Horror" value="Horror" />
+                    <Picker.Item label="Novel" value="Novel" />
+                    <Picker.Item label="Mystery" value="Mystery" />
+                    <Picker.Item label="Poetry" value="Poetry" />
+                    <Picker.Item label="Romance" value="Romance" />
+                    <Picker.Item label="Sci-Fi" value="Sci-Fi" />
+                  </Picker>
+                </View>
 
                 <Mybutton title="Submit" customClick={register_book} />
             
               </KeyboardAvoidingView>
             </ScrollView>
           </View>
-          <Text
-            style={{
-              fontSize: 18,
-              textAlign: 'center',
-              color: 'grey'
-            }}>
-            EpicTeam
-          </Text>
+          
           <Text
             style={{
               fontSize: 16,
               textAlign: 'center',
               color: 'grey'
             }}>
+            EpicTeam
           </Text>
         </View>
       </SafeAreaView>
     );
-  };
+};
+  const styles = StyleSheet.create({
+    viewPick: {
+      marginLeft: 35,
+      marginRight: 35,
+      marginTop: 10,
+      borderColor: '#007FFF',
+      borderWidth: 1,
+    }
+  });

@@ -8,13 +8,15 @@ import * as SQLite from 'expo-sqlite'; //expo-sqlite library that provides acces
 const db = SQLite.openDatabase('db.db'); //Open a database, creating it if it doesn't exist, and return a Database object.
 
 /* The login function shows a screen with a form to enter a user and password, a button to create a user and a button to log in.
-  Also, the users and table_books tables are created and a user and 5 books are inserted.
+  Also, the users and table_books tables are created and a user and 10 books are inserted from a json file.
   The validation of a valid user is also done in this function.
  */
 export default function login({ navigation }) {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const booksData = require('./components/books.json'); //the data of the json file is storaged in a constant
   
   // variable userTest: contains a user with 4 attributes to insert into the users table.
   var userTest = {
@@ -23,8 +25,8 @@ export default function login({ navigation }) {
     password: '1234',
     role: 'admin'
   }
-  // variable books: an array that contains 5 books with their attributes to insert into the table_books table. 
-  var books = [{
+   
+  /* var books = [{
     Book_id: 1,
     Book_name: "Papelucho",
     Author: "Marcela Paz",
@@ -53,7 +55,7 @@ export default function login({ navigation }) {
     Book_name: "The lord of the rings",
     Author: "JRR Tolkien",
     Cathegory: "Fantasy"
-  }];
+  }]; */
 
   React.useEffect(() => {
 
@@ -83,10 +85,11 @@ export default function login({ navigation }) {
           []
         );
         // Inserting books into the table_books table using a for-loop to go through the books array that contains the data for each book.
-        for (let i = 0; i < books.length; i++){
+        for (let i = 0; i < booksData.length; i++){
           tx.executeSql(
             "insert into table_books (book_name, author, cathegory) values (?, ?, ?)",
-            [books[i].Book_name, books[i].Author, books[i].Cathegory]
+            [booksData[i].Book_name, booksData[i].Author, booksData[i].Cathegory]
+            //[books[i].Book_name, books[i].Author, books[i].Cathegory]
         );}
 
     });
@@ -111,7 +114,7 @@ export default function login({ navigation }) {
     // query to the database to validate the user
     db.transaction(function (tx) {
       tx.executeSql(
-        'SELECT * FROM users where email = ? and password = ?',
+        'SELECT * FROM users where email LIKE ? and password = ?',
           [email, password],
           (tx, results) => {
             var len = results.rows.length;
