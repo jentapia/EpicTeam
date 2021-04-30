@@ -19,10 +19,6 @@ export default function RegisterBook({navigation}) {
     let register_book = () => {
       console.log(book_id, book_name, author, cathegory);
    //check there is something to fill the imputs.
-    /*   if (!book_id) {
-        alert('Please fill book id');
-        return;
-      } */
       if (!book_name) {
         alert('Please fill Book Name');
         return;

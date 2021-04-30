@@ -54,9 +54,7 @@ const db = SQLite.openDatabase('db.db');
                         renderItem={({ item }) => listItemView(item)}
                     />
                     </View>
-        
                 </View>
-
                 );
             }
             else {
@@ -107,7 +105,6 @@ const db = SQLite.openDatabase('db.db');
             renderItem={({ item }) => listItemView(item)}
           />
         </View>
-        
       </View>
     </SafeAreaView>
   );

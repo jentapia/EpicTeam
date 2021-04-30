@@ -31,7 +31,7 @@ export default function RegisterNewUser({navigation}) {
       let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;        
       
 
-      if (reg.test(text) === false) {   //test the email with the pattern above described (letter by letter)
+      if (reg.test(text) === false) {   //test the email with the pattern above described (input by input)
         console.log("Email is Not Correct");               
         return false;
       }

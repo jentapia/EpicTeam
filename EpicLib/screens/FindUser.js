@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
 import Mytextinput from './components/Mytextinput';
 import Mybutton from './components/Mybutton';
+//expo-sqlite library that provides access to an SQLite DB
+import * as SQLite from 'expo-sqlite'; 
 
-import * as SQLite from 'expo-sqlite'; //expo-sqlite library that provides access to an SQLite DB
-
-const db = SQLite.openDatabase('db.db'); //Open a database, creating it if it doesn't exist, and return a Database object.
+//Open a database, creating it if it doesn't exist, and return a Database object.
+const db = SQLite.openDatabase('db.db'); 
 
 /**
  * the function findUser shows a user search and shows its details after querying the DB

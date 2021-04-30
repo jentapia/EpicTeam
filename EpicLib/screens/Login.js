@@ -25,77 +25,62 @@ export default function login({ navigation }) {
     password: '1234',
     role: 'admin'
   }
-   
-  /* var books = [{
-    Book_id: 1,
-    Book_name: "Papelucho",
-    Author: "Marcela Paz",
-    Cathegory: "Fantasy"
-  },
-  {
-    Book_id: 2,
-    Book_name: "Pride and Prejudice",
-    Author: "Jane Austen",
-    Cathegory: "Novel"
-  },
-  {
-    Book_id: 3,
-    Book_name: "La casa de los espiritus",
-    Author: "Isabel Allende",
-    Cathegory: "Novel"
-  },
-  {
-    Book_id: 4,
-    Book_name: "El Quijote de La Mancha",
-    Author: "Miguel de Cervantes",
-    Cathegory: "Novel"
-  },
-  {
-    Book_id: 5,
-    Book_name: "The lord of the rings",
-    Author: "JRR Tolkien",
-    Cathegory: "Fantasy"
-  }]; */
+  // useEffect allows to carry out secondary effects on components, does not need to be called to execute the code inside
+  React.useEffect(() =>{
+    db.transaction(function (txn) {
+      txn.executeSql(
+        //Query to ask if table users is in the DB, if it doesn't exist, the users table is created 
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='users'", 
+        [],
+        function (tx, res){
+          console.log('item:', res.rows.length);
+          if (res.rows.length == 0) { //if there are no query results, the table is created
+            tx.executeSql('DROP TABLE IF EXISTS users', []); // The table users is dropped if exists in the DB 
 
-  React.useEffect(() => {
-
-      db.transaction(tx => {
-    
-        tx.executeSql('DROP TABLE IF EXISTS users', []); // The table users is dropped if exists in the DB 
-
-        // Creating the users table. Be a valid user it is necessary to interact with the Application.
-        // The users table is created with 4 attributes: id, email, password and role.
-        tx.executeSql(
-          "CREATE TABLE IF NOT EXISTS users (id_user integer primary key AUTOINCREMENT, email TEXT, password TEXT, role TEXT);",
-          []
-        );
-        tx.executeSql(
-         "insert into users (email, password, role) values (?, ?, ?)",
-         [userTest.email, userTest.password, userTest.role]
-       );
-         
-      });
-             
-      db.transaction(tx => {
-        tx.executeSql('DROP TABLE IF EXISTS table_books', []);
-        
-        // Creating the table table_books.
-        tx.executeSql(
-          "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, book_name TEXT, author TEXT, cathegory TEXT)",
-          []
-        );
-        // Inserting books into the table_books table using a for-loop to go through the books array that contains the data for each book.
-        for (let i = 0; i < booksData.length; i++){
-          tx.executeSql(
-            "insert into table_books (book_name, author, cathegory) values (?, ?, ?)",
-            [booksData[i].Book_name, booksData[i].Author, booksData[i].Cathegory]
-            //[books[i].Book_name, books[i].Author, books[i].Cathegory]
-        );}
-
+            // Creating the users table. Be a valid user it is necessary to interact with the Application.
+            // The users table is created with 4 attributes: id, email, password and role.
+            tx.executeSql(
+              "CREATE TABLE IF NOT EXISTS users (id_user integer primary key AUTOINCREMENT, email TEXT, password TEXT, role TEXT);",
+              []
+            );
+            tx.executeSql(
+              "insert into users (email, password, role) values (?, ?, ?)",
+              [userTest.email, userTest.password, userTest.role]
+            );
+          }
+        }
+      );   
     });
-
+           
+    db.transaction(function (txn) {
+      //Query to ask if the table_books table is in the DB, if it doesn't exist, the table_books table is created
+      txn.executeSql(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='table_books'", //Query to ask if table table_books is in the DB
+        [],
+        function (tx, res){
+          console.log('item:', res.rows.length);
+          if (res.rows.length == 0) {
+      
+            tx.executeSql('DROP TABLE IF EXISTS table_books', []);
+            
+            // Creating the table table_books.
+            tx.executeSql(
+              "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, book_name TEXT, author TEXT, cathegory TEXT)",
+              []
+            );
+            // Inserting books into the table_books table using a for-loop to go through the books array that contains the data for each book.
+            for (let i = 0; i < booksData.length; i++){
+              tx.executeSql(
+                "insert into table_books (book_name, author, cathegory) values (?, ?, ?)",
+                [booksData[i].Book_name, booksData[i].Author, booksData[i].Cathegory]
+              );}
+          }
+        }
+      );
+    });
   }, []);
-
+    
+  
   /* validUser is a function to validate a user, if the user is in the database and the password is correct, the application goes to next screen
     Also, send alerts if the user does not fill a field.
    */

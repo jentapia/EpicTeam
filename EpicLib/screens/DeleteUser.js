@@ -16,7 +16,9 @@ export default function DeleteUser ({ navigation }) {
   let [inputUserId, setInputUserId] = useState('');
 
   let deleteuser = () => {
-    if (inputUserId != 1){  // this coonditional makes sure that the user to be deleted is not the default user "test"
+    
+    // this coonditional makes sure that the user to be deleted is not the default user "test"
+    if (inputUserId != 1){  
     db.transaction((tx) => {
       tx.executeSql(
         'DELETE FROM  users where id_user=?',
