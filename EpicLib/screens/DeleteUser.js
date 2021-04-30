@@ -1,3 +1,10 @@
+/* 
+      * * *   D E L E T E   U S E R  * * *
+
+    Use of the DeleteUser to remove an user from the database.
+    
+ */
+
 import React, { useState } from 'react';
 import { Text, View, Alert, SafeAreaView } from 'react-native';
 import Mytextinput from './components/Mytextinput';

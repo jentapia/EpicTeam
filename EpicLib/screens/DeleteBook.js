@@ -1,3 +1,10 @@
+/* 
+      * * *   D E L E T E   B O O K   * * *
+
+    Use of the function DeleteBook to remove a book from de Database
+    
+ */
+
 import React, { useState } from 'react';
 import { Text, View, Alert, SafeAreaView } from 'react-native';
 import Mytextinput from './components/Mytextinput';

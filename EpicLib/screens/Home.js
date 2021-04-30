@@ -1,3 +1,12 @@
+/* 
+      * * *   H O M E    P A G E * * *
+
+    Main page where the Screen names are defined
+    for navigation and some syles defined.
+    
+ */
+
+
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
 import Constants from 'expo-constants';

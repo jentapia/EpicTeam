@@ -1,3 +1,10 @@
+/* 
+      * * *   F I N D    U S E R   * * *
+
+    Use of the function to search an user using a SQLite query.
+    
+ */
+
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
 import Mytextinput from './components/Mytextinput';

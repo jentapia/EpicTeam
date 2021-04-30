@@ -1,3 +1,11 @@
+/* 
+      * * *   U S E R   S E A R C H   B O O K  * * *
+
+    UserSearchBook shows a screen with the list of books and a book finder
+    The Select query to the DB ask for the name of the book or part of it.
+    
+ */
+
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, View, SafeAreaView, StyleSheet } from 'react-native';
 import Mytextinput from './components/Mytextinput';
@@ -6,10 +14,7 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.db');
 
-/**
- * UserSearchBook shows a screen with the list of books and a book finder
- * The Select query to the DB ask for the name of the book or part of it
-*/
+
   export default function UserSearchBook({navigation}) {
   let [flatListItems, setFlatListItems] = useState([]); // variable to storage the result of the query
   let [inputBookName, setInputBookName] = useState(''); //variable to storage the user input

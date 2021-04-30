@@ -1,7 +1,10 @@
-/**
- * Screen to add a new user to the database
- * Import of the components
+/* 
+      * * *   R E G I S T E R    N E W    U S E R  * * *
+    
+      Screen to add a new user to the database
+    
  */
+
 import React, { useState } from 'react';
 import { View, ScrollView, KeyboardAvoidingView, StyleSheet, SafeAreaView,Text, Button, TextInput} from 'react-native';
 import Mytextinput from './components/Mytextinput';

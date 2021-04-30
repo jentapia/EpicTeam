@@ -1,3 +1,9 @@
+/* 
+      * * *   L I S T   U S E R S * * *
+
+    Use of the function ListUser to display the users in the database.
+    
+ */
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 

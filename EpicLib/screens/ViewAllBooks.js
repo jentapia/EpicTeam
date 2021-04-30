@@ -1,3 +1,11 @@
+/* 
+      * * *   V I E W   A L L   B O O K S  * * *
+
+    Use of the function ViewAllBooks to show the list of the books
+    from the database.
+    
+ */
+
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, View, SafeAreaView, Button } from 'react-native';
 //import the library to use sqlite

@@ -1,3 +1,11 @@
+/* 
+      * * *  R E G I S T E R   B O O K  * * *
+
+    Use of the function RegisterBook to store a book in the database.
+    
+ */
+
+
 import React, { useState } from 'react';
 import { View, ScrollView, KeyboardAvoidingView, Alert, SafeAreaView,Text, StyleSheet} from 'react-native';
 import Mytextinput from './components/Mytextinput';

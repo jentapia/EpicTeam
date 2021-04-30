@@ -1,3 +1,29 @@
+/*
+    * * * * * * * * *        E p i c L i b      * * * * * *
+    
+    EpicLib is a small prototype to demonstrate the interaction
+    between REACT Native and SQLite functionality.
+    
+    EpicLib is based on a code from:
+    Agrawal, Snehal. Aboutreact.com.
+    https://aboutreact.com/example-of-sqlite-database-in-react-native/
+    (2021)
+
+    This program was made by Epic Team conformed by:
+
+      - Danilo Anibal Pincheira Muñoz(2020408)
+      - Jennifer Carolina Tapia Gallo (2020424)
+      - Jose Alberto Cruz Sanchez (2019437)
+      - María Eugenia Fajardo Rojas (2020429)
+      - Mitzy Guadalupe Macias de la Torre (2020426)
+
+    For the modules Mobile Development and Professional Practice in IT
+    as a part of the Higher Diploma in Computing Sciences on CCT College
+    with due date on May 1st, 2021.
+
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+*/
+
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';

@@ -1,3 +1,36 @@
+/*
+    * * * * * * * * *        E p i c L i b      * * * * * *
+    
+    EpicLib is a small prototype to demonstrate the interaction
+    between REACT Native and SQLite functionality.
+    
+    EpicLib is based on a code from:
+    Agrawal, Snehal. Aboutreact.com.
+    https://aboutreact.com/example-of-sqlite-database-in-react-native/
+    (2021)
+
+    This program was made by Epic Team conformed by:
+
+      - Danilo Anibal Pincheira Muñoz(2020408)
+      - Jennifer Carolina Tapia Gallo (2020424)
+      - Jose Alberto Cruz Sanchez (2019437)
+      - María Eugenia Fajardo Rojas (2020429)
+      - Mitzy Guadalupe Macias de la Torre (2020426)
+
+    For the modules Mobile Development and Professional Practice in IT
+    as a part of the Higher Diploma in Computing Sciences on CCT College
+    with due date on May 1st, 2021.
+
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+*/
+
+/* 
+      * * *    L O G I N    S C R E E N    * * *
+  The login function shows a screen with a form to enter a user and password, a button to create a user and a button to log in.
+  Also, the users and table_books tables are created and a user and 10 books are inserted from a json file.
+  The validation of a valid user is also done in this function.
+ */
+
 import * as React from 'react';
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
@@ -7,10 +40,6 @@ import * as SQLite from 'expo-sqlite'; //expo-sqlite library that provides acces
 
 const db = SQLite.openDatabase('db.db'); //Open a database, creating it if it doesn't exist, and return a Database object.
 
-/* The login function shows a screen with a form to enter a user and password, a button to create a user and a button to log in.
-  Also, the users and table_books tables are created and a user and 10 books are inserted from a json file.
-  The validation of a valid user is also done in this function.
- */
 export default function login({ navigation }) {
   
   const [email, setEmail] = useState("");
