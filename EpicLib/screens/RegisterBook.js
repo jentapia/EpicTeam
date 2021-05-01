@@ -25,7 +25,7 @@ export default function RegisterBook({navigation}) {
     let [category, setCategory] = useState('');
   
     let register_book = () => {
-      console.log(book_id, book_name, author, cathegory);
+      console.log(book_id, book_name, author, category);
    //check there is something to fill the imputs.
       if (!book_name) {
         alert('Please fill Book Name');
