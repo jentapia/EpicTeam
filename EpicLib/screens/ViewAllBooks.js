@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { FlatList, Text, View, SafeAreaView, Button } from 'react-native';
+import { FlatList, Text, View, SafeAreaView } from 'react-native';
 //import the library to use sqlite
 import * as SQLite from 'expo-sqlite';
 //open he data base

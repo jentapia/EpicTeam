@@ -15,7 +15,7 @@ import * as SQLite from 'expo-sqlite';
 const db = SQLite.openDatabase('db.db');
 
 
-  export default function UserSearchBook({navigation}) {
+  export default function UserSearchBook() {
   let [flatListItems, setFlatListItems] = useState([]); // variable to storage the result of the query
   let [inputBookName, setInputBookName] = useState(''); //variable to storage the user input
  
@@ -49,8 +49,7 @@ const db = SQLite.openDatabase('db.db');
                 temp.push(results.rows.item(i));
                 setFlatListItems(temp); //setting in the variable flatListItems the list of results from the query
                 }
-                return(
-                // View of the list of books after the search of the user           
+                /* return(
                 <View style={{ flex: 1, backgroundColor: 'white' }}>
                     <View style={{ flex: 1 }}>
                     <FlatList
@@ -60,7 +59,7 @@ const db = SQLite.openDatabase('db.db');
                     />
                     </View>
                 </View>
-                );
+                ); */
             }
             else {
                 alert('Book not found');
@@ -89,7 +88,7 @@ const db = SQLite.openDatabase('db.db');
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         
         <View style={{ flex: 1 }}>
-
+        
         {/* The user input is set to inputBookName with a % symbol at the beginning and end of the string 
             to query the database if the string is part of the title */}
         <Mytextinput
@@ -103,7 +102,7 @@ const db = SQLite.openDatabase('db.db');
           {/* Calling to the searchBook function */}
         <Mybutton title="Search Book" customClick={searchBook} /> 
         
-        {/* View of the list of books before the search of the user  */}
+        {/* View of the list of all books and after the search of the user  */}
           <FlatList
             data={flatListItems}
             keyExtractor={(item, index) => index.toString()}
