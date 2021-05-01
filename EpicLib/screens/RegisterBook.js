@@ -93,20 +93,14 @@ export default function RegisterBook({navigation}) {
                   maxLength={50}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
-                {/* <Mytextinput
-                  placeholder="Enter Cathegory of the book"
-                  onChangeText={
-                    (cathegory) => setCathegory(cathegory)
-                  }
-                  style={{ padding: 10 }}
-                /> */}
+                {/* The picker component shows a list of book cathegories that the user can select*/}
                 <View style={styles.viewPick}>
                   <Picker
                     selectedValue={cathegory}
                     onValueChange={(itemValue, itemIndex) =>
                       setCathegory(itemValue)
                     } style={{ padding: 10, color: '#007FFF', borderColor: 'white'}}>
-                    <Picker.Item label="Select a Cathegory" value=" " />
+                    <Picker.Item label="Select a Cathegory" value="" />
                     <Picker.Item label="Adventure" value="Adventure" />
                     <Picker.Item label="Classic" value="Classic" />
                     <Picker.Item label="Comic Book" value="Comic Book" />

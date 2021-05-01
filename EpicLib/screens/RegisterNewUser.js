@@ -120,14 +120,14 @@ export default function RegisterNewUser({navigation}) {
                   maxLength={225}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
-                
+                {/* The picker component allows us to show a list of items that the user can select, in this case: a user role */}
                 <View style={styles.viewPick}>
                   <Picker
                     selectedValue={role}
                     onValueChange={(itemValue, itemIndex) =>
                       setRole(itemValue)
                     } style={{ padding: 10, color: '#007FFF', borderColor: 'white'}}>
-                    <Picker.Item label="Select a Role" value=" " />
+                    <Picker.Item label="Select a Role" value="" />
                     <Picker.Item label="User" value="user" />
                     <Picker.Item label="Admin" value="admin" />
                   </Picker>
