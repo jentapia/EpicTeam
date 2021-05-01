@@ -22,7 +22,7 @@ export default function RegisterBook({navigation}) {
     let [book_id, setBook_id] = useState('');
     let [book_name, setBook_name] = useState('');
     let [author, setAuthor] = useState('');
-    let [cathegory, setCathegory] = useState('');
+    let [category, setCategory] = useState('');
   
     let register_book = () => {
       console.log(book_id, book_name, author, cathegory);
@@ -35,16 +35,16 @@ export default function RegisterBook({navigation}) {
         alert('Please fill Author');
         return;
       }
-      if (!cathegory) {
-        alert('Please fill Cathegory');
+      if (!category) {
+        alert('Please fill Category');
         return;
       }
  
       //insert the values in the data base.
       db.transaction(function (tx) {
         tx.executeSql(
-          'INSERT INTO table_books (book_name, author, cathegory) VALUES (?,?,?)',
-          [book_name, author, cathegory],
+          'INSERT INTO table_books (book_name, author, category) VALUES (?,?,?)',
+          [book_name, author, category],
           (tx, results) => {
             console.log('Results', results.rowsAffected);
             if (results.rowsAffected > 0) {
@@ -96,11 +96,11 @@ export default function RegisterBook({navigation}) {
                 {/* The picker component shows a list of book cathegories that the user can select*/}
                 <View style={styles.viewPick}>
                   <Picker
-                    selectedValue={cathegory}
+                    selectedValue={category}
                     onValueChange={(itemValue, itemIndex) =>
-                      setCathegory(itemValue)
+                      setCategory(itemValue)
                     } style={{ padding: 10, color: '#007FFF', borderColor: 'white'}}>
-                    <Picker.Item label="Select a Cathegory" value="" />
+                    <Picker.Item label="Select a Category" value="" />
                     <Picker.Item label="Adventure" value="Adventure" />
                     <Picker.Item label="Classic" value="Classic" />
                     <Picker.Item label="Comic Book" value="Comic Book" />

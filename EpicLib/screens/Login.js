@@ -94,14 +94,14 @@ export default function login({ navigation }) {
             
             // Creating the table table_books.
             tx.executeSql(
-              "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, book_name TEXT, author TEXT, cathegory TEXT)",
+              "CREATE TABLE IF NOT EXISTS table_books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, book_name TEXT, author TEXT, category TEXT)",
               []
             );
             // Inserting books into the table_books table using a for-loop to go through the books array that contains the data for each book.
             for (let i = 0; i < booksData.length; i++){
               tx.executeSql(
-                "insert into table_books (book_name, author, cathegory) values (?, ?, ?)",
-                [booksData[i].Book_name, booksData[i].Author, booksData[i].Cathegory]
+                "insert into table_books (book_name, author, category) values (?, ?, ?)",
+                [booksData[i].Book_name, booksData[i].Author, booksData[i].Category]
               );}
           }
         }

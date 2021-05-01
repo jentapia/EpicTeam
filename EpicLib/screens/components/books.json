@@ -2,60 +2,60 @@
     "Book id": 1,
     "Book_name": "Don Quixote of La Mancha",
     "Author": "Miguel de Cervantes",
-    "Cathegory": "Classic"    
+    "Category": "Classic"    
 },
 {
     "Book id": 2,
     "Book_name": "Pride and Prejudice",
     "Author": "Jane Austen",
-    "Cathegory": "Novel"
+    "Category": "Novel"
 },
 {
     "Book id": 3,
     "Book_name": "The House of the Spirits",
     "Author": "Isabel Allende",
-    "Cathegory": "Novel"
+    "Category": "Novel"
 },
 {
     "Book id": 4,
     "Book_name": "Collected Poems",
     "Author": "Emily Dickinson",
-    "Cathegory": "Poetry"    
+    "Category": "Poetry"    
 },
 {
     "Book id": 5,
     "Book_name": "The Lord of the Rings",
     "Author": "JRR Tolkien",
-    "Cathegory": "Fantasy"
+    "Category": "Fantasy"
 },
 {
     "Book id": 6,
     "Book_name": "The Three Musketeers",
     "Author": "Alexander Dumas",
-    "Cathegory": "Adventure"
+    "Category": "Adventure"
 },
 {
     "Book id": 7,
     "Book_name": "The Adventures of Sherlock Holmes",
     "Author": "Arthur Conan Doyle",
-    "Cathegory": "Mystery"
+    "Category": "Mystery"
 },
 {
     "Book id": 8,
     "Book_name": "Carrie",
     "Author": "Stephen King",
-    "Cathegory": "Horror"
+    "Cathgory": "Horror"
 },
 {
     "Book id": 9,
     "Book_name": "1984",
     "Author": "George Orwell",
-    "Cathegory": "Sci-Fi"
+    "Category": "Sci-Fi"
 },
 {
     "Book id": 10,
     "Book_name": "Papelucho",
     "Author": "Marcela Paz",
-    "Cathegory": "Adventure"
+    "Category": "Adventure"
 }
 ]

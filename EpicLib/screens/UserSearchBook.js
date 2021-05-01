@@ -49,17 +49,7 @@ const db = SQLite.openDatabase('db.db');
                 temp.push(results.rows.item(i));
                 setFlatListItems(temp); //setting in the variable flatListItems the list of results from the query
                 }
-                /* return(
-                <View style={{ flex: 1, backgroundColor: 'white' }}>
-                    <View style={{ flex: 1 }}>
-                    <FlatList
-                        data={flatListItems} 
-                        keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item }) => listItemView(item)}
-                    />
-                    </View>
-                </View>
-                ); */
+               
             }
             else {
                 alert('Book not found');
@@ -77,7 +67,7 @@ const db = SQLite.openDatabase('db.db');
         <Text style={styles.bookTitle}>{item.book_name}</Text>
         <Text style={styles.bookDetails}>Book id: {item.book_id}</Text>
         <Text style={styles.bookDetails}>Author: {item.author}</Text>
-        <Text style={styles.bookDetails}>Cathegory: {item.cathegory}</Text>
+        <Text style={styles.bookDetails}>Category: {item.category}</Text>
       </View>
     );
   };
