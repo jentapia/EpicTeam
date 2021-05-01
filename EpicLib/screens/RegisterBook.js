@@ -93,7 +93,7 @@ export default function RegisterBook({navigation}) {
                   maxLength={50}
                   style={{ textAlignVertical: 'top', padding: 10 }}
                 />
-                {/* The picker component shows a list of book cathegories that the user can select*/}
+                {/* The picker component shows a list of book categories that the user can select*/}
                 <View style={styles.viewPick}>
                   <Picker
                     selectedValue={category}
